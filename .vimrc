@@ -31,6 +31,9 @@ let g:dracula_colorterm = 0
 
 syntax on
 
+" remove trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
 let g:lightline = {
 \  'colorscheme': 'deus',
 \  'inactive': {
