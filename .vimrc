@@ -36,14 +36,14 @@ let g:dracula_colorterm = 0
 syntax on
 
 let g:lightline = {
-\  'colorscheme': 'deus',
+\  'colorscheme': 'one',
 \  'inactive': {
 \    'left': [[], ['file', 'modified']],
 \    'right': []
 \  },
 \  'active': {
 \    'left': [['mode', 'paste'], ['file', 'modified'], ['buffers']],
-\    'right': [['lineinfo'], ['percent'], ['readonly']]
+\    'right': [['lineinfo'], ['percent'], ['readonly'], ['fileformat', 'fileencoding', 'filetype']]
 \  },
 \  'tabline': {
 \    'left': [['tabs']],
@@ -67,11 +67,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 " update statusline when dealing with buffers
 autocmd BufAdd,BufDelete,BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
-nmap <C-n> :NERDTreeToggle<CR>
+nmap <silent> <C-n> :NERDTreeToggle<CR>
 
-nmap <C-x> :bd<CR>
-nmap gB :bprev<CR>
-nmap gb :bnext<CR>
+nmap <silent> <C-x> :bd<CR>
+nmap <silent> gB :bprev<CR>
+nmap <silent> gb :bnext<CR>
 
 nmap 1gb <Plug>lightline#bufferline#go(1)
 nmap 2gb <Plug>lightline#bufferline#go(2)
