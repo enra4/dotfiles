@@ -7,6 +7,9 @@ Plug 'raimondi/delimitMate'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'lervag/vimtex'
+Plug '907th/vim-auto-save'
+Plug 'sirver/ultisnips'
 
 call plug#end()
 
@@ -36,14 +39,14 @@ let g:dracula_colorterm = 0
 syntax on
 
 let g:lightline = {
-\  'colorscheme': 'deus',
+\  'colorscheme': 'one',
 \  'inactive': {
 \    'left': [[], ['file', 'modified']],
 \    'right': []
 \  },
 \  'active': {
 \    'left': [['mode', 'paste'], ['file', 'modified'], ['buffers']],
-\    'right': [['lineinfo'], ['percent'], ['readonly']]
+\    'right': [['lineinfo'], ['percent'], ['readonly'], ['fileformat', 'fileencoding', 'filetype']]
 \  },
 \  'tabline': {
 \    'left': [['tabs']],
@@ -61,17 +64,40 @@ let g:lightline = {
 \}
 let g:lightline#bufferline#show_number = 2
 
+let g:polyglot_disabled = ['latex']
+
+" for vimtex
+Plug 'lervag/vimtex'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=0
+" let g:tex_conceal='abdmg'
+
+" for auto-save
+" only really used when i write latex
+let g:auto_save = 0 " enable with :AutoSaveToggle
+let g:auto_save_silent = 1
+let g:auto_save_updatetime = 1000
+" option below seems bugged but would be nice :$
+" let g:auto_save_events = ['CursorHold', 'CursorHoldI']
+
+" for snippets
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
 " update statusline when dealing with buffers
 autocmd BufAdd,BufDelete,BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
-nmap <C-n> :NERDTreeToggle<CR>
+nmap <silent> <C-n> :NERDTreeToggle<CR>
 
-nmap <C-x> :bd<CR>
-nmap gB :bprev<CR>
-nmap gb :bnext<CR>
+nmap <silent> <C-x> :bd<CR>
+nmap <silent> gB :bprev<CR>
+nmap <silent> gb :bnext<CR>
 
 nmap 1gb <Plug>lightline#bufferline#go(1)
 nmap 2gb <Plug>lightline#bufferline#go(2)
