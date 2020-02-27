@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'liuchengxu/space-vim-dark'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'raimondi/delimitMate'
@@ -14,16 +15,18 @@ Plug 'sirver/ultisnips'
 call plug#end()
 
 set breakindent
+set colorcolumn=80
 set cursorline
 set fillchars=vert:│,fold:-
 set hidden
 set incsearch
 set laststatus=2
-set lazyredraw
+" set lazyredraw
 set nocompatible
 set noshowmode
 set noswapfile
 set number
+set relativenumber
 set scrolloff=9999
 set shiftwidth=4
 set showcmd
@@ -33,10 +36,13 @@ set updatetime=100
 set wildmenu
 set wildmode=list
 
-colorscheme dracula
-let g:dracula_colorterm = 0
-
+colorscheme space-vim-dark
+set termguicolors
+hi Comment cterm=italic
+hi LineNr ctermbg=NONE guibg=NONE
 syntax on
+
+let &t_ut=''
 
 let g:lightline = {
 \  'colorscheme': 'one',
@@ -46,7 +52,8 @@ let g:lightline = {
 \  },
 \  'active': {
 \    'left': [['mode', 'paste'], ['file', 'modified'], ['buffers']],
-\    'right': [['lineinfo'], ['percent'], ['readonly'], ['fileformat', 'fileencoding', 'filetype']]
+\    'right': [['lineinfo'], ['percent'], ['readonly'],
+\				['fileformat', 'fileencoding', 'filetype']]
 \  },
 \  'tabline': {
 \    'left': [['tabs']],

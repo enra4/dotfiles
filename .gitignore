@@ -1,4 +1,2 @@
-.vim/autoload/*
 .vim/plugged/*
-!.vim/autoload/.gitkeep
 !.vim/plugged/.gitkeep
