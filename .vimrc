@@ -100,6 +100,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 " update statusline when dealing with buffers
 autocmd BufAdd,BufDelete,BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
+" check to see to convert markdown -> pdf
+autocmd InsertLeave,TextChanged * call Convertmd()
+
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
 nmap <silent> <C-x> :bd<CR>
@@ -115,3 +118,14 @@ nmap 6gb <Plug>lightline#bufferline#go(6)
 nmap 7gb <Plug>lightline#bufferline#go(7)
 nmap 8gb <Plug>lightline#bufferline#go(8)
 nmap 9gb <Plug>lightline#bufferline#go(9)
+
+" convert markdown to pdf if auto save is enabled
+" assumes pandoc is installed
+function! Convertmd()
+	let extension = expand('%:e')
+	if g:auto_save && extension == 'md'
+		let filename = expand('%:t:r')
+		let s = filename . '.md -f markdown -o ' . filename . '.pdf &'
+		execute 'silent ! pandoc ' . s
+	endif
+endfunction
