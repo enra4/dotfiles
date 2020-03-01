@@ -24,4 +24,3 @@
 - latexmk - (should be installed with texlive-core) https://www.ctan.org/pkg/latexmk/
 - kitty - https://github.com/kovidgoyal/kitty
 - lesspass - https://github.com/lesspass/lesspass
-
