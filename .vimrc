@@ -103,6 +103,9 @@ autocmd BufAdd,BufDelete,BufWritePost,TextChanged,TextChangedI * call lightline#
 " check to see to convert markdown -> pdf
 autocmd InsertLeave,TextChanged * call Convertmd()
 
+" default
+autocmd BufNewFile,BufRead * let b:auto_save = 0
+
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
 nmap <silent> <C-x> :bd<CR>
