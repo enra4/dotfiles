@@ -83,7 +83,7 @@ set conceallevel=0
 
 " for auto-save
 " only really used when i write latex
-let g:auto_save = 0 " enable with :AutoSaveToggle
+let g:auto_save = 0 " dont use global, use `:let b:auto_save = 1` instead
 let g:auto_save_silent = 1
 let g:auto_save_updatetime = 1000
 " option below seems bugged but would be nice :$
@@ -123,7 +123,7 @@ nmap 9gb <Plug>lightline#bufferline#go(9)
 " assumes pandoc is installed
 function! Convertmd()
 	let extension = expand('%:e')
-	if g:auto_save && extension == 'md'
+	if b:auto_save && extension == 'md'
 		let filename = expand('%:t:r')
 		let s = filename . '.md -f markdown -o ' . filename . '.pdf &'
 		execute 'silent ! pandoc ' . s
