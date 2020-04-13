@@ -23,7 +23,6 @@ set incsearch
 set laststatus=2
 " set lazyredraw
 set nocompatible
-set noesckeys
 set noshowmode
 set noswapfile
 set number
@@ -33,6 +32,7 @@ set shiftwidth=4
 set showcmd
 set smartindent
 set tabstop=4
+set ttimeoutlen=50
 set updatetime=100
 set wildmenu
 set wildmode=list
