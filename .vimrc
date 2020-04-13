@@ -23,6 +23,7 @@ set incsearch
 set laststatus=2
 " set lazyredraw
 set nocompatible
+set noesckeys
 set noshowmode
 set noswapfile
 set number
