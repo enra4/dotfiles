@@ -18,6 +18,7 @@
 	- texlive-bin
 	- texlive-fontsextra
 	- texlive-science
+	- texlive-latexextra
 
 ## other useful things
 
