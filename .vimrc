@@ -1,7 +1,8 @@
 call plug#begin('~/.vim/plugged')
 
 " Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'liuchengxu/space-vim-dark'
+" Plug 'liuchengxu/space-vim-dark'
+Plug 'stillwwater/vim-nebula'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'raimondi/delimitMate'
@@ -37,16 +38,22 @@ set updatetime=100
 set wildmenu
 set wildmode=list
 
-colorscheme space-vim-dark
+" colorscheme space-vim-dark
+set background=dark
+colorscheme nebula
 set termguicolors
+hi Normal guibg=NONE ctermbg=NONE
 hi Comment cterm=italic
 hi LineNr ctermbg=NONE guibg=NONE
 syntax on
+highlight Normal guibg=#1b1617
+highlight CursorLine guibg=NONE
+highlight ColorColumn guibg=#231d1f
 
 let &t_ut=''
 
 let g:lightline = {
-\  'colorscheme': 'one',
+\  'colorscheme': 'seoul256',
 \  'inactive': {
 \    'left': [[], ['file', 'modified']],
 \    'right': []
@@ -133,3 +140,12 @@ function! Convertmd()
 		execute 'silent ! pandoc ' . s
 	endif
 endfunction
+
+" show syntax highlighting groups for word under cursor
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
