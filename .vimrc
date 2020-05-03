@@ -12,7 +12,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'lervag/vimtex'
 Plug '907th/vim-auto-save'
 Plug 'sirver/ultisnips'
-
+Plug 'wincent/command-t', {
+	\	'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
+	\ }
 call plug#end()
 
 set breakindent
