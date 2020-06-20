@@ -118,7 +118,7 @@ autocmd BufNewFile,BufRead * let b:auto_save = 0
 
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
-nmap <silent> <C-x> :bd<CR>
+nmap <silent> <C-x> :bp\|bd # <bar> call lightline#update()<CR>
 nmap <silent> gB :bprev<CR>
 nmap <silent> gb :bnext<CR>
 
