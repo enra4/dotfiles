@@ -70,7 +70,8 @@ let g:lightline = {
 \    'right': [['close']]
 \  },
 \  'component': {
-\    'file': '%{expand("%")}'
+\    'file': '%{expand("%")}',
+\    'lineinfo': '%3l:%-2v%<'
 \  },
 \  'component_expand': {
 \    'buffers': 'lightline#bufferline#buffers'
