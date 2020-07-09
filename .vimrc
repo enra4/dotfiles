@@ -105,14 +105,15 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" disable beeping, both bell and window flashing
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
 " update statusline when dealing with buffers
 autocmd BufAdd,BufDelete,BufWritePost,TextChanged,TextChangedI * call lightline#update()
-
-" check to see to convert markdown -> pdf
-autocmd InsertLeave,TextChanged * call Convertmd()
 
 " default
 autocmd BufNewFile,BufRead * let b:auto_save = 0
@@ -132,17 +133,6 @@ nmap 6gb <Plug>lightline#bufferline#go(6)
 nmap 7gb <Plug>lightline#bufferline#go(7)
 nmap 8gb <Plug>lightline#bufferline#go(8)
 nmap 9gb <Plug>lightline#bufferline#go(9)
-
-" convert markdown to pdf if auto save is enabled
-" assumes pandoc is installed
-function! Convertmd()
-	let extension = expand('%:e')
-	if b:auto_save && extension == 'md'
-		let filename = expand('%:t:r')
-		let s = filename . '.md -f markdown -o ' . filename . '.pdf &'
-		execute 'silent ! pandoc ' . s
-	endif
-endfunction
 
 " show syntax highlighting groups for word under cursor
 nmap <C-S-P> :call <SID>SynStack()<CR>
