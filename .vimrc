@@ -112,6 +112,12 @@ autocmd GUIEnter * set visualbell t_vb=
 " remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+" https://vi.stackexchange.com/questions/12009/how-do-i-keep-accidentally-creating-a-no-break-space-before-opening-curly-brace
+augroup FixNoBreakSpaces
+  autocmd!
+  autocmd BufWritePre *.css silent! :%s/\%u00A0/ /g
+augroup end
+
 " update statusline when dealing with buffers
 autocmd BufAdd,BufDelete,BufWritePost,TextChanged,TextChangedI * call lightline#update()
 
@@ -133,12 +139,3 @@ nmap 6gb <Plug>lightline#bufferline#go(6)
 nmap 7gb <Plug>lightline#bufferline#go(7)
 nmap 8gb <Plug>lightline#bufferline#go(8)
 nmap 9gb <Plug>lightline#bufferline#go(9)
-
-" show syntax highlighting groups for word under cursor
-nmap <C-S-P> :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
