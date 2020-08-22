@@ -115,7 +115,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " https://vi.stackexchange.com/questions/12009/how-do-i-keep-accidentally-creating-a-no-break-space-before-opening-curly-brace
 augroup FixNoBreakSpaces
   autocmd!
-  autocmd BufWritePre *.css silent! :%s/\%u00A0/ /g
+  autocmd BufWritePre * silent! :%s/\%u00A0/ /g
 augroup end
 
 " update statusline when dealing with buffers
