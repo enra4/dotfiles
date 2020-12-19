@@ -1,20 +1,16 @@
-call plug#begin('~/.vim/plugged')
+let g:polyglot_disabled = ['latex']
 
-" Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'liuchengxu/space-vim-dark'
-Plug 'stillwwater/vim-nebula'
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'raimondi/delimitMate'
-Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'lervag/vimtex'
 Plug '907th/vim-auto-save'
 Plug 'sirver/ultisnips'
-Plug 'wincent/command-t', {
-	\	'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make'
-	\ }
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 set breakindent
@@ -41,16 +37,20 @@ set wildmenu
 set wildmode=list
 
 " colorscheme space-vim-dark
+" colorscheme nebula
+"
+" hi Normal guibg=NONE ctermbg=NONE
+" hi Comment cterm=italic
+" hi LineNr ctermbg=NONE guibg=NONE
+" highlight Normal guibg=#1b1617
+" highlight CursorLine guibg=NONE
+" highlight ColorColumn guibg=#231d1f
+
 set background=dark
-colorscheme nebula
 set termguicolors
-hi Normal guibg=NONE ctermbg=NONE
-hi Comment cterm=italic
-hi LineNr ctermbg=NONE guibg=NONE
+
 syntax on
-highlight Normal guibg=#1b1617
-highlight CursorLine guibg=NONE
-highlight ColorColumn guibg=#231d1f
+colorscheme yin
 
 let &t_ut=''
 
@@ -82,10 +82,10 @@ let g:lightline = {
 \}
 let g:lightline#bufferline#show_number = 2
 
-let g:polyglot_disabled = ['latex']
+" for goyo, looks so much prettier without though...
+let g:goyo_linenr=1
 
 " for vimtex
-Plug 'lervag/vimtex'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
@@ -124,12 +124,12 @@ autocmd BufAdd,BufDelete,BufWritePost,TextChanged,TextChangedI * call lightline#
 " default
 autocmd BufNewFile,BufRead * let b:auto_save = 0
 
-nmap <silent> <C-n> :NERDTreeToggle<CR>
-
+" buffers
 nmap <silent> <C-x> :bp\|bd # <bar> call lightline#update()<CR>
 nmap <silent> gB :bprev<CR>
 nmap <silent> gb :bnext<CR>
 
+" lol
 nmap 1gb <Plug>lightline#bufferline#go(1)
 nmap 2gb <Plug>lightline#bufferline#go(2)
 nmap 3gb <Plug>lightline#bufferline#go(3)
@@ -139,3 +139,9 @@ nmap 6gb <Plug>lightline#bufferline#go(6)
 nmap 7gb <Plug>lightline#bufferline#go(7)
 nmap 8gb <Plug>lightline#bufferline#go(8)
 nmap 9gb <Plug>lightline#bufferline#go(9)
+
+" plugins
+nmap <silent> <Leader>t :Files<CR>
+nmap <silent> <Leader>f :GFiles<CR>
+nmap <silent> <Leader>b :Buffers<CR>
+nmap <silent> <Leader>g :Goyo<CR>
