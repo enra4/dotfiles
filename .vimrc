@@ -11,6 +11,7 @@ Plug 'lervag/vimtex'
 Plug '907th/vim-auto-save'
 Plug 'sirver/ultisnips'
 Plug 'junegunn/goyo.vim'
+Plug 'psliwka/vim-smoothie'
 call plug#end()
 
 set breakindent
@@ -18,6 +19,7 @@ set colorcolumn=80
 set cursorline
 set fillchars=vert:│,fold:-
 set hidden
+set ignorecase
 set incsearch
 set laststatus=2
 " set lazyredraw
@@ -83,14 +85,14 @@ let g:lightline = {
 let g:lightline#bufferline#show_number = 2
 
 " for goyo, looks so much prettier without though...
-let g:goyo_linenr=1
+let g:goyo_linenr=0
 
 " for vimtex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=0
-" let g:tex_conceal='abdmg'
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " for auto-save
 " only really used when i write latex
