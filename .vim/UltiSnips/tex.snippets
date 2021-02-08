@@ -22,13 +22,37 @@ snippet bf "textbf"
 endsnippet
 
 snippet it "textit"
-\textit{$1}$1
+\textit{$1}$0
+endsnippet
+
+snippet mbf "mathbf"
+\mathbf{$1}$0
+endsnippet
+
+snippet cal "mathcal"
+\mathcal{$1}$0
+endsnippet
+
+snippet bb "mathbb"
+\mathbb{$1}$0
+endsnippet
+
+snippet inv "inverse"
+^{-1}
+endsnippet
+
+snippet sup "superscript"
+^{$1}$0
+endsnippet
+
+snippet sub "subscript"
+_{$1}$0
 endsnippet
 
 snippet dm "math"
 \[
-$1
-.\] $0
+	$1
+\] $0
 endsnippet
 
 snippet im "math"
@@ -43,8 +67,9 @@ snippet tfrac "tiny fraction"
 \tfrac{$1}{$2}$0
 endsnippet
 
+# note that this is not a standard latex command
 snippet set "set"
-\{ $1 \}$0
+\set{$1}$0
 endsnippet
 
 snippet sum "sum"
