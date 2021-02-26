@@ -1,0 +1,15 @@
+vim
+tmux
+xclip
+pandoc
+zathura
+zathura-djvu
+zathura-pdf-mupdf
+zathura-ps
+xdotool
+texlive-core
+texlive-bibtexextra
+texlive-bin
+texlive-fontsextra
+texlive-science
+texlive-latexextra
