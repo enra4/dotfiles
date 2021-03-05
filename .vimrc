@@ -84,6 +84,14 @@ let g:lightline = {
 \}
 let g:lightline#bufferline#show_number = 2
 
+" for smoothie
+" update interval is to match 144hz
+" speeds have to get updated as well to not get slow scroll
+let g:smoothie_update_interval = 7
+let g:smoothie_speed_linear_factor = 30
+let g:smoothie_speed_constant_factor = 20
+" let g:smoothie_spped_exponentiation_factor = 0.9
+
 " for goyo, looks so much prettier without though...
 let g:goyo_linenr=0
 
